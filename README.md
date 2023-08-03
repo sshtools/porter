@@ -25,8 +25,7 @@ Adjust for other build systems.
     <groupId>com.sshtools</groupId>
     <artifactId>porter</artifactId>
     <version>1.0.0</version>
-</dependency>
-    
+</dependency> 
 ```
 
 ### JPMS
@@ -38,7 +37,7 @@ If you are using [JPMS](https://en.wikipedia.org/wiki/Java_Platform_Module_Syste
 Usage is very simple. A port mapping can be achieved with a single line of code.
 
 ```java
-    UPnP.gateway().ifPresent(gw -> gw.map(80, Protocol.TCP));
+UPnP.gateway().ifPresent(gw -> gw.map(80, Protocol.TCP));
 ```
 
 Or to map different ports.
