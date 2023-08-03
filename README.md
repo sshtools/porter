@@ -44,43 +44,43 @@ Usage is very simple. A port mapping can be achieved with a single line of code.
 Or to map different ports.
 
 ```java
-    gw -> gw.map(8080, 80, Protocol.TCP);
+gw.map(8080, 80, Protocol.TCP);
 ```
 
 Or to unmap.
 
 ```java
-    gw -> gw.unmap(80, Protocol.TCP);
+gw.unmap(80, Protocol.TCP);
 ```
 
 Or to test if mapped.
 
 ```java
-    var mapped = gw.mapped(80, Protocol.TCP);
-    if(mapped) {
-        System.out.println("Mapped!");
-    }
-    else {
-        System.out.println("Not Mapped!");
-    }
+var mapped = gw.mapped(80, Protocol.TCP);
+if(mapped) {
+    System.out.println("Mapped!");
+}
+else {
+    System.out.println("Not Mapped!");
+}
 ```
 
 For more control over the discovery process, instead of usage, `UPnP.gateway()`, use `DiscoveryBuilder`.
 You can use this to configure, monitor discovery, list all gateways and more.
 
 ```java
-    try(var discovery = new UPnP.DiscoveryBuilder().
-        withoutShutdownHooks().
-        onGateway(gw -> {
-            System.out.format("Gateway found %s%n", gw.ip());
-        }).
-        build()) {
-        
-        /* Not strictly needed, here from demonstrations purposes */
-        discovery.awaitCompletion();
-        
-        /* gateways() will wait till complete */
-        var count = discovery.gateways().size();
-        System.out.format("Found %d gateways%n", count);
-    }
+try(var discovery = new UPnP.DiscoveryBuilder().
+    withoutShutdownHooks().
+    onGateway(gw -> {
+        System.out.format("Gateway found %s%n", gw.ip());
+    }).
+    build()) {
+    
+    /* Not strictly needed, here from demonstrations purposes */
+    discovery.awaitCompletion();
+    
+    /* gateways() will wait till complete */
+    var count = discovery.gateways().size();
+    System.out.format("Found %d gateways%n", count);
+}
 ```
