@@ -12,6 +12,8 @@ Tiny Java library that uses UPnP to map external WAN ports to internal LAN ports
  * Map external TCP and UDP ports to internal ones.
  * Automatically unmap on JVM shutdown.
  * Requires Java 11 or above.
+ * Zero runtime dependencies.
+ * Graal Native Image compatible.
 
 ## Installation
 
@@ -21,7 +23,7 @@ Adjust for other build systems.
 ```xml
 <dependency>
     <groupId>com.sshtools</groupId>
-    <artifactId>com.sshtools</artifactId>
+    <artifactId>porter</artifactId>
     <version>1.0.0</version>
 </dependency>
     
