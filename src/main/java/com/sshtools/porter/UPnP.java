@@ -247,14 +247,16 @@ public final class UPnP {
             content.append(" xmlns:m=\"");
             content.append(type);
             content.append("\">");
-            for (var p : parms.entrySet()) {
-                content.append("<");
-                content.append(p.getKey());
-                content.append(">");
-                content.append(p.getValue());
-                content.append("</");
-                content.append(p.getKey());
-                content.append(">");
+            if(parms != null) {
+	            for (var p : parms.entrySet()) {
+	                content.append("<");
+	                content.append(p.getKey());
+	                content.append(">");
+	                content.append(p.getValue());
+	                content.append("</");
+	                content.append(p.getKey());
+	                content.append(">");
+	            }
             }
             content.append("</m:");
             content.append(cmd);
@@ -351,6 +353,7 @@ public final class UPnP {
                 Map<String, String> r = cmd("GetExternalIPAddress", null);
                 return Optional.of(r.get("NewExternalIPAddress"));
             } catch (Throwable t) {
+            	t.printStackTrace();
                 return Optional.empty();
             }
         }
