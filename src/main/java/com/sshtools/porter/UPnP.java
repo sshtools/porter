@@ -171,7 +171,7 @@ public final class UPnP {
         private final String type;
         private final URI control;
         private final boolean shutdownHooks;
-        private final Map<Integer, Thread> hooks = Collections.unmodifiableMap(new HashMap<>());
+        private final Map<Integer, Thread> hooks = new HashMap<>();
 
         private Gateway(InetAddress localIp, InetAddress ip, URI location, boolean shutdownHooks) throws IOException {
             this.localIp = localIp;
